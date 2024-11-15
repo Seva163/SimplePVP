@@ -1,0 +1,27 @@
+name: '${project.name}'
+version: '${project.version}'
+main: '${project.groupId}.${project.artifactId}.${project.name}'
+api-version: '1.20'
+author: Ayoree
+description: Плагин, позволяющий настраивать пвп на сервере
+prefix: SimplePVP
+folia-supported: true
+
+commands: {}
+
+permissions:
+  simplepvp.gamemode.survival:
+    description: Позволяет бить игроков в режиме выживания
+    default: not op
+  simplepvp.gamemode.creative:
+    description: Позволяет бить игроков в режиме креатива
+    default: op
+  simplepvp.gamemode.adventure:
+    description: Позволяет бить игроков в режиме приключения
+    default: not op
+  simplepvp.gamemode.spectator:
+    description: Позволяет бить игроков в режиме приключения
+    default: op
+  simplepvp.timer.bypass:
+    description: Выключает таймер во время пвп
+    default: op
