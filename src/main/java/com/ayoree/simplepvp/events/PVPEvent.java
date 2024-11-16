@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class PVPEvent implements Listener {
-    SimplePVP plugin;
+    private final SimplePVP plugin;
 
     public PVPEvent(SimplePVP plugin) { this.plugin = plugin; }
 
@@ -22,7 +22,7 @@ public class PVPEvent implements Listener {
 
         if (event.getEntity() instanceof Player defender) {
             if (event.getDamager() instanceof Player damager) {
-                String gamemodeStr = getGamemodeStr(damager);
+                String gamemodeStr = damager.getGameMode().name().toLowerCase();
                 if (damager.hasPermission("simplepvp.gamemode." + gamemodeStr)) {
                     if (Config.PVP_TIMER) {
                         if (!damager.hasPermission("simplepvp.timer.bypass")
@@ -45,14 +45,5 @@ public class PVPEvent implements Listener {
                 }
             }
         }
-    }
-
-    private String getGamemodeStr(Player player) {
-        return switch (player.getGameMode()) {
-            case SURVIVAL -> "survival";
-            case CREATIVE -> "creative";
-            case ADVENTURE -> "adventure";
-            case SPECTATOR -> "spectator";
-        };
     }
 }
