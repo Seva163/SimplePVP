@@ -1,10 +1,10 @@
-# Simpe PVP
+# Simple PVP
 
-## Translation
+## Translations
 - [Russian](README.md)
+- [English](README.en.md)
 
 A plugin that allows configuring PVP logic on the server.
-<br/><br/>
 
 ## **Features**
 - **No unnecessary**: The plugin is designed to be understandable for any player. It does not include burdensome features.
@@ -12,13 +12,9 @@ A plugin that allows configuring PVP logic on the server.
 - **PVP by gamemodes**: Configure permissions to disable PVP in specific gamemodes.
 - **Easy to configure**: The configuration does not contain excessive information and is easy to set up.
 
-<br/>
-
 ## **Permissions**
 - Allows PVP in a specific game mode: `simplepvp.gamemode.<gamemode>`
 - Disables the PVP timer, along with death upon exiting and blocking commands: `simplepvp.timer.bypass`
-
-<br/>
 
 ## config.yml
 ```yaml
@@ -36,9 +32,9 @@ exit-pvp-kill: true
 
 # These commands cannot be used during PVP mode
 blocked-cmds:
-- '/spawn'
-- '/tp'
-- '/tpo'
+  - '/spawn'
+  - '/tp'
+  - '/tpo'
 
 # -=-=-=-=-=- MESSAGES -=-=-=-=-=-
 # For color, use the symbol '§'
