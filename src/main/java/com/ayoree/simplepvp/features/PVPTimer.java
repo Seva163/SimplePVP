@@ -27,7 +27,10 @@ public class PVPTimer {
     }
 
     public static void remove(Player player) {
-        actives.remove(player);
+        if (actives.containsKey(player)) {
+            actives.get(player).stop();
+            actives.remove(player);
+        }
     }
 
     public static boolean isInPVP(Player player) {

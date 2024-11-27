@@ -4,6 +4,7 @@ import com.ayoree.simplepvp.Config;
 import com.ayoree.simplepvp.SimplePVP;
 import com.ayoree.simplepvp.features.PVPTimer;
 import com.ayoree.simplepvp.utils.Util;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;

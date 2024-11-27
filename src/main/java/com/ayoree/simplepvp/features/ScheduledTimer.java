@@ -33,15 +33,19 @@ public class ScheduledTimer {
     }
 
     private void performTask() {
-        if (seconds >= 0) {
+        if (seconds > 0) {
             Util.sendMessage(player, Config.MSG_ON_PVP_TIME, "{time}", seconds, true);
             seconds--;
         }
         else {
             Util.sendMessage(player, Config.MSG_END_PVP, true);
-            isRunning = false;
-            scheduler.shutdownNow();
-            PVPTimer.remove(player);
+            stop();
         }
+    }
+
+    protected void stop() {
+        isRunning = false;
+        scheduler.shutdownNow();
+        PVPTimer.remove(player);
     }
 }
