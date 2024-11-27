@@ -6,13 +6,12 @@
 
     <groupId>com.ayoree</groupId>
     <artifactId>simplepvp</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>SimplePVP</name>
 
-    <description>Плагин добавляющий простую настройку пвп
-    </description>
+    <description>Плагин добавляющий простую настройку пвп</description>
     <properties>
         <author>Ayoree</author>
         <jarName>${project.name}-${project.version}</jarName>
