@@ -13,7 +13,7 @@ public final class SimplePVP extends JavaPlugin {
         config = new Config(this);
         config.loadConfig();
 
-        getServer().getPluginManager().registerEvents(new PVPEvent(this), this);
+        getServer().getPluginManager().registerEvents(new PVPEvent(), this);
         getServer().getPluginManager().registerEvents(new CommandEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(this), this);
 

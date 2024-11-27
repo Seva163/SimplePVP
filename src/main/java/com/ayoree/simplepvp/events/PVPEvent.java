@@ -13,9 +13,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
 public class PVPEvent implements Listener {
-    private final SimplePVP plugin;
-
-    public PVPEvent(SimplePVP plugin) { this.plugin = plugin; }
 
     @EventHandler(priority = EventPriority.LOWEST)
     private void onPlayerPVP(EntityDamageByEntityEvent event) {
