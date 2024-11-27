@@ -5,11 +5,13 @@ import com.ayoree.simplepvp.SimplePVP;
 import com.ayoree.simplepvp.features.PVPTimer;
 import com.ayoree.simplepvp.utils.Util;
 import org.bukkit.GameMode;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
+import org.bukkit.projectiles.ProjectileSource;
 
 public class PVPEvent implements Listener {
     SimplePVP plugin;
@@ -21,7 +23,19 @@ public class PVPEvent implements Listener {
         if (event.isCancelled()) return;
 
         if (event.getEntity() instanceof Player defender) {
-            if (event.getDamager() instanceof Player damager) {
+            Entity entity = event.getDamager();
+            Player damager = null;
+
+            if (entity instanceof Player player) {
+                damager = player;
+            } else if (entity instanceof Projectile projectile) {
+                ProjectileSource source = projectile.getShooter();
+                if (source instanceof Player player) {
+                    damager = player;
+                }
+            }
+
+            if (damager != null && damager != defender) {
                 String gamemodeStr = getGamemodeStr(damager);
                 if (damager.hasPermission("simplepvp.gamemode." + gamemodeStr)) {
                     if (Config.PVP_TIMER) {
