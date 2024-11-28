@@ -40,12 +40,12 @@ public class ScheduledTimer {
         else {
             Util.sendMessage(player, Config.MSG_END_PVP, true);
             stop();
+            PVPTimer.remove(player);
         }
     }
 
     protected void stop() {
         isRunning = false;
         scheduler.shutdownNow();
-        PVPTimer.remove(player);
     }
 }

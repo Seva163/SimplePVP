@@ -27,7 +27,7 @@ public class PlayerLeaveEvent implements Listener {
                 plugin.getLogger().info(Config.MSG_EXIT_ON_PVP.replace("{player}", player.getName().replaceAll("§[0-9a-f]", "")));
                 player.setHealth(0.0);
             }
-            PVPTimer.remove(player);
+            PVPTimer.stopAndRemove(player);
         }
     }
 }

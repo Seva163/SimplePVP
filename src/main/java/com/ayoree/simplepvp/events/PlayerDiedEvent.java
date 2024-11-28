@@ -1,7 +1,6 @@
 package com.ayoree.simplepvp.events;
 
 import com.ayoree.simplepvp.features.PVPTimer;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,7 +11,9 @@ public class PlayerDiedEvent implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerDied(PlayerDeathEvent event) {
-        PVPTimer.remove(event.getPlayer());
+        Player player = event.getPlayer();
+        if (PVPTimer.isInPVP(player)) {
+            PVPTimer.stopAndRemove(player);
+        }
     }
-
 }

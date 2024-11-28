@@ -26,7 +26,11 @@ public class PVPTimer {
         timer.startTimer(seconds);
     }
 
-    public static void remove(Player player) {
+    protected static void remove(Player player) {
+        actives.remove(player);
+    }
+
+    public static void stopAndRemove(Player player) {
         if (actives.containsKey(player)) {
             actives.get(player).stop();
             actives.remove(player);
