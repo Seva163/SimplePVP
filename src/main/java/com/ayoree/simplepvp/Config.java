@@ -1,13 +1,15 @@
 package com.ayoree.simplepvp;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Config {
 
@@ -17,11 +19,13 @@ public class Config {
     public static boolean EXIT_KILL = true;
     public static boolean PVP_TIMER = true;
     public static int PVP_TIME = 15;
+    public static Set<Material> blockedItems = new HashSet<>();
     public static Set<String> blockedCmds = new HashSet<>();
 
     public static String MSG_NO_PERMISSION = "§f[§4§lPVP§r§f] §cУ вас нет прав для PVP в данном режиме";
     public static String MSG_ON_PVP_TIME = "§cДо выхода из §lPVP§r§c осталось §e{time}§c секунд";
     public static String MSG_ON_PVP_COMMAND = "§cВы не можете выполнять данную команду во время PVP";
+    public static String MSG_ON_PVP_ITEM = "§cВы не можете использовать данный предмет во время PVP";
     public static String MSG_EXIT_ON_PVP = "§e{player} вышел во время §cPVP§e и был наказан!";
     public static String MSG_END_PVP = "§aВы вышли из §lPVP§r§a режима";
 
@@ -50,10 +54,16 @@ public class Config {
         if (PVP_TIMER) {
             MSG_ON_PVP_TIME = config.getString("on-pvp-msg", MSG_ON_PVP_TIME);
             MSG_ON_PVP_COMMAND = config.getString("command-on-pvp-msg", MSG_ON_PVP_COMMAND);
+            MSG_ON_PVP_ITEM = config.getString("item-on-pvp-msg", MSG_ON_PVP_COMMAND);
             MSG_END_PVP = config.getString("end-pvp-msg", MSG_END_PVP);
 
-            List<String> commandsSection = config.getStringList("blocked-cmds");
-            blockedCmds.addAll(commandsSection);
+            blockedItems = config.getStringList("blocked-items").stream()
+                    .map(String::toUpperCase)
+                    .map(Material::getMaterial)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toSet());
+
+            blockedCmds = new HashSet<>(config.getStringList("blocked-cmds"));
         }
     }
 }
