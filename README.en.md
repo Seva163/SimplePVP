@@ -36,15 +36,25 @@ blocked-cmds:
   - '/tp'
   - '/tpo'
 
+# These items cannot be used during PVP mode
+blocked-items:
+  - 'firework_rockets'
+
 # -=-=-=-=-=- MESSAGES -=-=-=-=-=-
 # For color, use the symbol '§'
 # If you want to disable any message, make it empty.
+
+# Displayed when plugin is reloaded
+plugin-reload-msg: '§fPlugin successfully reloaded'
 
 # Displayed in ActionBar during PVP mode
 on-pvp-msg: '§cYou are in §lPVP§r§c. §e{time}§c seconds remaining until exit from §lPVP'
 
 # Displayed when entering a blocked command during PVP mode
 command-on-pvp-msg: '§f[§4§lPVP§r§f] §cYou cannot execute this command during PVP'
+
+# Displayed when using a blocked item during PVP mode
+item-on-pvp-msg: '§f[§4§lPVP§r§f] §cВы не можете использовать данный предмет во время PVP'
 
 # Broadcast to all players on the server if a player exits during PVP
 exit-on-pvp-msg: '§f[§4§lPVP§r§f] §e{player} exited during §cPVP§e and was punished!'
