@@ -21,6 +21,8 @@ public final class SimplePVP extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDiedEvent(), this);
         getServer().getPluginManager().registerEvents(new UseItemEvent(), this);
 
+        getCommand("simplepvp_reload").setExecutor(new ReloadCommand(this));
+
         getLogger().info("Плагин запущен.");
     }
 

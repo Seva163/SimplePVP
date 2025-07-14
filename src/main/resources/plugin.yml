@@ -7,9 +7,15 @@ description: Плагин, позволяющий настраивать пвп 
 prefix: SimplePVP
 folia-supported: true
 
-commands: {}
+commands:
+  simplepvp_reload:
+    usage: /simplepvp_reload
+    permission: simplepvp.reload
 
 permissions:
+  simplepvp.reload:
+    description: Позволяет перезагружать плагин
+    default: op
   simplepvp.gamemode.survival:
     description: Позволяет бить игроков в режиме выживания
     default: not op
